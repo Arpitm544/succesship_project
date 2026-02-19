@@ -21,10 +21,12 @@ app.get('/', (req, res) => {
 
 app.use('/api', apiRoutes)
 
-
+if (require.main === module) {
   const port = process.env.PORT || 5000
   app.listen(port, () => {
     console.log(`Server started on ${port}`)
   })
+}
 
+// Export the app for Vercel
 module.exports = app
