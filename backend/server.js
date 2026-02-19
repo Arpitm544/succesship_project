@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const apiRoutes = require('./routes/api')
-const serverless = require('serverless-http')
+
 
 const app = express()
 app.use(cors())
@@ -28,4 +28,4 @@ if (require.main === module) {
   })
 }
 
-module.exports = serverless(app)
+module.exports = app
