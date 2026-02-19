@@ -16,7 +16,31 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Root welcome message for backend
 app.get('/', (req, res) => {
-  res.send('Welcome to the backend!')
+  const html = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Backend API</title>
+        <style>
+          body { font-family: system-ui, sans-serif; padding: 2rem; }
+          h1 { color: #333; }
+          ul { list-style-type: disc; padding-left: 20px; }
+          li { margin: 10px 0; }
+          code { background: #f4f4f4; padding: 2px 5px; border-radius: 4px; }
+        </style>
+      </head>
+      <body>
+        <h1>Welcome to the Backend!</h1>
+        <p>Available Endpoints:</p>
+        <ul>
+          <li><code>GET /api/memories</code> - Retrieve all memories</li>
+          <li><code>POST /api/memories</code> - Create a new memory</li>
+          <li><code>POST /api/query</code> - Query memories with AI</li>
+        </ul>
+      </body>
+    </html>
+  `
+  res.send(html)
 })
 
 app.use('/api', apiRoutes)
